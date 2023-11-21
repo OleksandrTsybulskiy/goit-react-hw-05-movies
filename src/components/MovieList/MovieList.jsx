@@ -1,23 +1,24 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { MovieImg, MovieItem, MovieLink, MovieListStyle, MovieName, Wrapper } from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
     const location = useLocation()
     const imgUrl = 'https://image.tmdb.org/t/p/w500/';
 
   return (
-    <div>
-      <ul>
+    <Wrapper>
+      <MovieListStyle>
         {movies.map(({id, title, original_name, poster_path}) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={{from:location}}>
-                {poster_path ? <img src={imgUrl.concat(poster_path)} alt=''/> : <img src='' alt=''/>}
-              <p>{title ?? original_name}</p>
-            </Link>
-          </li>
+          <MovieItem key={id}>
+            <MovieLink to={`/movies/${id}`} state={{from:location}}>
+                {poster_path ? <MovieImg src={imgUrl.concat(poster_path)} alt=''/> : <img src='' alt=''/>}
+              <MovieName>{title ?? original_name}</MovieName>
+            </MovieLink>
+          </MovieItem>
         ))}
-      </ul>
-    </div>
+      </MovieListStyle>
+    </Wrapper>
   );
 };
 

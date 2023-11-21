@@ -1,6 +1,7 @@
 import { getMovieCredits } from 'api';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Character, Img, Item, List, Name } from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
@@ -17,19 +18,19 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <List>
         {cast.length === 0 && <div>Not found</div>}
         {cast.map(({ id, profile_path, name, character }) => (
-          <li key={id}>
+          <Item key={id}>
             {profile_path ? (
-              <img src={imgUrl.concat(profile_path)} alt="" />) : (<img src="" alt="" />)}
+              <Img src={imgUrl.concat(profile_path)} alt="" />) : (<img src="" alt="" />)}
             <div>
-              <p>{name}</p>
-              <p>Character {character}</p>
+              <Name>{name}</Name>
+              <Character>Character {character}</Character>
             </div>
-          </li>
+          </Item>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container, Description, Img, Text, Title, Wrapper, Year } from './MovieCard.styled';
 
 const MovieCard = ({movieDetails}) => {
 
@@ -11,16 +12,16 @@ const imgUrl = 'https://image.tmdb.org/t/p/w500/'.concat(poster_path);
 
 
   return (
-    <div>
-    {poster_path ? <img src={imgUrl} alt=''/> : <img src='' alt=''/>}
-    <div>
-        <h2>{title} <span>{release}</span></h2>
-        <p>User score: {voteAv}</p>
-        <p>Overview</p>
-        <p>{overview}</p>
-        <p>Genre: {genresList}</p>
-    </div>
-    </div>
+    <Container>
+    {poster_path ? <Img src={imgUrl} alt=''/> : <img src='' alt=''/>}
+    <Wrapper>
+        <Title>{title} <Year>{release}</Year></Title>
+        <Text>User score: {voteAv}</Text>
+        <Description>Overview</Description>
+        <Text>{overview}</Text>
+        <Text>Genre: {genresList}</Text>
+    </Wrapper>
+    </Container>
   )
 }
 

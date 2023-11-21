@@ -1,11 +1,12 @@
 import React from 'react'
+import { Form, Button, Input } from './SearchForm.styled'
 
 const SearchForm = ({onChange, onSubmit}) => {
   return (
-    <form onSubmit={onSubmit}>
-        <input type="text" onChange={onChange}/>
-        <button>Search</button>
-    </form>
+    <Form onSubmit={onSubmit}>
+        <Input type="text" onChange={onChange}/>
+        <Button>Search</Button>
+    </Form>
   )
 }
 
